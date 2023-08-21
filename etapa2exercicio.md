@@ -1,4 +1,9 @@
+## ETAPA 1: foi feito pela interface do PhpMyAdmin
+
+## ETAPA 2:
+
 ```sql
+
 -- Cadastrando 5 Cursos 
 INSERT INTO cursos (titulo, carga_horaria)
 VALUES
@@ -40,5 +45,29 @@ VALUES
     ('Nathalia Mota', 1, 6.0, 9.0, '1993-10-30'),
     ('Julia Mota', 2, 6.5, 8.0, '2001-01-13'),
     ('Isaque Silva', 3, 9.0, 10.0, '2013-06-26');
+```
+
+## ETAPA 3:
+
+```sql
+-- Selecionando alunos que nasceram antes de 2009
+SELECT nome, data_de_nascimento
+FROM alunos
+WHERE YEAR(data_de_nascimento) < 2009;
+```
+![print do exercício 01](print-1.png)
+
+```sql
+-- Somando as notas e o resultado da média
+SELECT nome, ROUND((primeira_nota + segunda_nota) / 2, 2) AS 'Média'
+FROM alunos;
+```
+![print do exercício 01](print-2.png)
+
+```sql
+-- Calculando o limite de faltas do curso
+SELECT titulo, ROUND(carga_horaria * 0.25) AS 'Lmt De Faltas'
+FROM cursos
+GROUP BY titulo;
 
 ```
