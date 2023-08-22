@@ -62,12 +62,106 @@ WHERE YEAR(data_de_nascimento) < 2009;
 SELECT nome, ROUND((primeira_nota + segunda_nota) / 2, 2) AS 'Média'
 FROM alunos;
 ```
-![print do exercício 01](print-2.png)
+![print do exercício 02](print-2.png)
 
 ```sql
 -- Calculando o limite de faltas do curso
 SELECT titulo, ROUND(carga_horaria * 0.25) AS 'Lmt De Faltas'
 FROM cursos
-GROUP BY titulo;
+GROUP BY titulo
+ORDER BY titulo;
+```
+![print do exercício 03](print-3.png)
 
+```sql
+SELECT nome
+FROM professor
+WHERE area_de_atuacao = 'desenvolvimento';
+```
+![print do exercício 04](print-4.png)
+
+```sql
+SELECT area_de_atuacao, COUNT(*) AS Quantidade
+FROM professor
+WHERE area_de_atuacao IN ('design', 'infra', 'desenvolvimento')
+GROUP BY area_de_atuacao;
+```
+![print do exercício 05](print-5.png)
+
+```sql
+SELECT alunos.nome AS Alunos, cursos.titulo AS Cursos, cursos.carga_horaria
+FROM alunos
+INNER JOIN cursos ON alunos.curso_id = cursos.id;
+```
+![print do exercício 06](print-6.png)
+
+```sql
+SELECT professor.nome AS Professor, cursos.titulo AS Cursos
+FROM professor 
+INNER JOIN cursos ON professor.curso_id = cursos.id
+ORDER BY professor;
+```
+![print do exercício 07](print-7.png)
+
+```sql
+SELECT alunos.nome AS Alunos, cursos.titulo AS Curso, professor.nome AS Professor 
+FROM alunos
+INNER JOIN alunos ON alunos.curso_id = cursos.id
+INNER JOIN cursos ON cursos.curso_id = professores.curso_id
+INNER JOIN professores ON professores.professor_id = professores.professor_id;
+
+SELECT alunos.nome AS Alunos, cursos.titulo AS Curso, professor.nome AS Professor 
+FROM alunos
+INNER JOIN cursos ON alunos.curso_id = cursos.id
+INNER JOIN professor ON cursos.professor_id = professor.id;
+```
+![print do exercício 08](print-8.png)
+
+```sql
+SELECT cursos.titulo AS Curso, COUNT(alunos.curso_id) AS Quantidade
+FROM cursos
+LEFT JOIN alunos ON cursos.id = alunos.curso_id
+GROUP BY cursos.titulo
+ORDER BY Quantidade DESC;
+```
+![print do exercício 09](print-9.png)
+
+```sql
+SELECT alunos.nome AS Alunos,alunos.primeira_nota AS 'Nota 1', alunos.segunda_nota AS 'Nota 2', ROUND((primeira_nota + segunda_nota) / 2, 2) AS 'Média', cursos.titulo AS Curso
+FROM alunos
+INNER JOIN cursos ON alunos.curso_id = cursos.id
+WHERE cursos.id IN(1,2)
+ORDER BY Alunos;
+```
+![print do exercício 10](print-10.png)
+
+```sql
+UPDATE cursos
+SET titulo = 'Adobe XD', carga_horaria = 15
+WHERE id = 4;
+```
+## sem print do exercício acima
+
+
+```sql
+DELETE FROM alunos
+WHERE (id = 7 AND curso_id = 5) OR
+      (id = 10 AND curso_id = 3);
+```
+## sem print do exercício acima
+
+
+```sql
+SELECT alunos.nome AS Aluno, cursos.titulo AS Curso
+FROM alunos
+INNER JOIN cursos ON alunos.curso_id = cursos.id
+ORDER BY Aluno;
+```
+![print do exercício 13](print-13.png)
+
+
+### DESAFIOS 
+
+```sql
+SELECT nome, DATEDIFF(CURDATE(2,3), data_de_nascimento) / 365 AS idade FROM alunos;
 ```
