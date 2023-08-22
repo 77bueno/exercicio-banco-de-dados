@@ -114,7 +114,7 @@ FROM alunos
 INNER JOIN cursos ON alunos.curso_id = cursos.id
 INNER JOIN professor ON cursos.professor_id = professor.id;
 ```
-![print do exercício 07](/imagens/exercicio-08.png)
+![print do exercício 08](/imagens/exercicio-08.png)
 
 ```sql
 -- 9- Faça uma consulta que mostre a quantidade de alunos que cada curso possui. Classifique os resultados em ordem descrecente de acordo com a quantidade de alunos.
@@ -123,7 +123,7 @@ FROM alunos
 INNER JOIN cursos ON alunos.curso_id = cursos.id
 INNER JOIN professor ON cursos.professor_id = professor.id;
 ```
-![print do exercício 07](/imagens/exercicio-09.png)
+![print do exercício 09](/imagens/exercicio-09.png)
 
 ```sql
 -- 10- Faça uma consulta que mostre a quantidade de alunos que cada curso possui. Classifique os resultados em ordem descrecente de acordo com a quantidade de alunos.
@@ -133,7 +133,7 @@ LEFT JOIN alunos ON cursos.id = alunos.curso_id
 GROUP BY cursos.titulo
 ORDER BY Quantidade DESC;
 ```
-![print do exercício 07](/imagens/exercicio-10.png)
+![print do exercício 10](/imagens/exercicio-10.png)
 
 ```sql
 -- 11- Faça uma consulta que mostre o nome dos alunos, suas notas, médias, e o título dos cursos que fazem. Devem ser considerados somente os alunos de Front-End e Back-End. Mostre os resultados classificados pelo nome do aluno.
@@ -143,7 +143,7 @@ INNER JOIN cursos ON alunos.curso_id = cursos.id
 WHERE cursos.id IN(1,2)
 ORDER BY Alunos;
 ```
-![print do exercício 07](/imagens/exercicio-11.png)
+![print do exercício 11](/imagens/exercicio-11.png)
 
 ```sql
 -- 12- Faça uma consulta que altere o nome do curso de Figma para Adobe XD e sua carga horária de 10 para 15.
@@ -168,7 +168,7 @@ FROM alunos
 INNER JOIN cursos ON alunos.curso_id = cursos.id
 ORDER BY Aluno;
 ```
-![print do exercício 07](/imagens/exercicio-13.png)
+![print do exercício 13](/imagens/exercicio-13.png)
 
 ## DESAFIOS 
 
@@ -177,3 +177,25 @@ ORDER BY Aluno;
 SELECT nome, TIMESTAMPDIFF(YEAR, data_de_nascimento, NOW()) AS idade
 FROM alunos;
 ```
+![print do desafio 1](/imagens/desafio1.png)
+
+### 2:
+```sql
+SELECT nome, ROUND((primeira_nota + segunda_nota) / 2, 2) media FROM alunos HAVING media >= 7;
+-- evitar repetição da expressão HAVING
+```
+![print do desafio 2](/imagens/desafio2.png)
+
+### 3:
+```sql
+SELECT nome, ROUND((primeira_nota + segunda_nota) / 2, 2) media FROM alunos HAVING media < 7;
+```
+![print do desafio 3](/imagens/desafio3.png)
+
+### 4:
+```sql
+SELECT COUNT(*) AS 'Quantidade Alunos'
+FROM alunos 
+WHERE ROUND((primeira_nota + segunda_nota) / 2, 2)  >= 7;
+```
+![print do desafio 4](/imagens/desafio4.png)
