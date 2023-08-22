@@ -55,14 +55,14 @@ SELECT nome, data_de_nascimento
 FROM alunos
 WHERE YEAR(data_de_nascimento) < 2009;
 ```
-![print do exercício 01](exercicio-01.png)
+![print do exercício 01](/imagens/exercicio-01.png)
 
 ```sql
 -- 2- Faça uma consulta que calcule a média das notas de cada aluno e as mostre com duas casas decimais.
 SELECT nome, ROUND((primeira_nota + segunda_nota) / 2, 2) AS 'Média'
 FROM alunos;
 ```
-![print do exercício 02](exercicio-02.png)
+![print do exercício 02](/imagens/exercicio-02.png)
 
 ```sql
 -- 3- Faça uma consulta que calcule o limite de faltas de cada curso de acordo com a carga horária. Considere o limite como 25% da carga horária. Classifique em ordem crescente pelo título do curso.
@@ -71,7 +71,7 @@ FROM cursos
 GROUP BY titulo
 ORDER BY titulo;
 ```
-![print do exercício 03](exercicio-03.png)
+![print do exercício 03](/imagens/exercicio-03.png)
 
 ```sql
 -- 4- Faça uma consulta que mostre os nomes dos professores que são somente da área "desenvolvimento".
@@ -79,7 +79,7 @@ SELECT nome
 FROM professor
 WHERE area_de_atuacao = 'desenvolvimento';
 ```
-![print do exercício 04](exercicio-04.png)
+![print do exercício 04](/imagens/exercicio-04.png)
 
 ```sql
 -- 5- Faça uma consulta que mostre a quantidade de professores que cada área ("design", "infra", "desenvolvimento") possui.
@@ -88,7 +88,7 @@ FROM professor
 WHERE area_de_atuacao IN ('design', 'infra', 'desenvolvimento')
 GROUP BY area_de_atuacao;
 ```
-![print do exercício 05](exercicio-05.png)
+![print do exercício 05](/imagens/exercicio-05.png)
 
 ```sql
 -- 6- Faça uma consulta que mostre o nome dos alunos, o título e a carga horária dos cursos que fazem.
@@ -96,7 +96,7 @@ SELECT alunos.nome AS Alunos, cursos.titulo AS Cursos, cursos.carga_horaria
 FROM alunos
 INNER JOIN cursos ON alunos.curso_id = cursos.id;
 ```
-![print do exercício 06](exercicio-06.png)
+![print do exercício 06](/imagens/exercicio-06.png)
 
 ```sql
 -- 7- Faça uma consulta que mostre o nome dos professores e o título do curso que lecionam. Classifique pelo nome do professor.
@@ -105,7 +105,7 @@ FROM professor
 INNER JOIN cursos ON professor.curso_id = cursos.id
 ORDER BY professor;
 ```
-![print do exercício 07](exercicio-07.png)
+![print do exercício 07](/imagens/exercicio-07.png)
 
 ```sql
 -- 8- Faça uma consulta que mostre o nome dos alunos, o título dos cursos que fazem, e o professor de cada curso.
@@ -114,7 +114,7 @@ FROM alunos
 INNER JOIN cursos ON alunos.curso_id = cursos.id
 INNER JOIN professor ON cursos.professor_id = professor.id;
 ```
-![print do exercício 07](exercicio-08.png)
+![print do exercício 07](/imagens/exercicio-08.png)
 
 ```sql
 -- 9- Faça uma consulta que mostre a quantidade de alunos que cada curso possui. Classifique os resultados em ordem descrecente de acordo com a quantidade de alunos.
@@ -123,7 +123,7 @@ FROM alunos
 INNER JOIN cursos ON alunos.curso_id = cursos.id
 INNER JOIN professor ON cursos.professor_id = professor.id;
 ```
-![print do exercício 07](exercicio-09.png)
+![print do exercício 07](/imagens/exercicio-09.png)
 
 ```sql
 -- 10- Faça uma consulta que mostre a quantidade de alunos que cada curso possui. Classifique os resultados em ordem descrecente de acordo com a quantidade de alunos.
@@ -133,7 +133,7 @@ LEFT JOIN alunos ON cursos.id = alunos.curso_id
 GROUP BY cursos.titulo
 ORDER BY Quantidade DESC;
 ```
-![print do exercício 07](exercicio-10.png)
+![print do exercício 07](/imagens/exercicio-10.png)
 
 ```sql
 -- 11- Faça uma consulta que mostre o nome dos alunos, suas notas, médias, e o título dos cursos que fazem. Devem ser considerados somente os alunos de Front-End e Back-End. Mostre os resultados classificados pelo nome do aluno.
@@ -143,8 +143,7 @@ INNER JOIN cursos ON alunos.curso_id = cursos.id
 WHERE cursos.id IN(1,2)
 ORDER BY Alunos;
 ```
-![print do exercício 07](exercicio-11.png)
-
+![print do exercício 07](/imagens/exercicio-11.png)
 
 ```sql
 -- 12- Faça uma consulta que altere o nome do curso de Figma para Adobe XD e sua carga horária de 10 para 15.
@@ -154,7 +153,6 @@ WHERE id = 4;
 ```
 ## sem print do exercício acima
 
-
 ```sql
 -- 13- Faça uma consulta que exclua um aluno do curso de Redes de Computadores e um aluno do curso de UX/UI.
 DELETE FROM alunos
@@ -163,7 +161,6 @@ WHERE (id = 7 AND curso_id = 5) OR
 ```
 ## sem print do exercício acima
 
-
 ```sql
 --  Faça uma consulta que mostre a lista de alunos atualizada e o título dos cursos que fazem, classificados pelo nome do aluno.
 SELECT alunos.nome AS Aluno, cursos.titulo AS Curso
@@ -171,7 +168,7 @@ FROM alunos
 INNER JOIN cursos ON alunos.curso_id = cursos.id
 ORDER BY Aluno;
 ```
-![print do exercício 07](exercicio-13.png)
+![print do exercício 07](/imagens/exercicio-13.png)
 
 ## DESAFIOS 
 
