@@ -118,12 +118,14 @@ INNER JOIN professor ON cursos.professor_id = professor.id;
 
 ```sql
 -- 9- Faça uma consulta que mostre a quantidade de alunos que cada curso possui. Classifique os resultados em ordem descrecente de acordo com a quantidade de alunos.
-SELECT alunos.nome AS Alunos, cursos.titulo AS Curso, professor.nome AS Professor 
-FROM alunos
-INNER JOIN cursos ON alunos.curso_id = cursos.id
-INNER JOIN professor ON cursos.professor_id = professor.id;
+
+SELECT cursos.titulo nome_do_curso, COUNT(alunos.curso_id) quantidade_aluno 
+    FROM alunos 
+    INNER JOIN cursos ON alunos.curso_id = cursos.id 
+    GROUP BY nome_do_curso 
+    ORDER BY quantidade_aluno DESC;
 ```
-![print do exercício 09](/imagens/exercicio-09.png)
+![print do exercício 08](/imagens/exercicio-qsumiu.png)
 
 ```sql
 -- 10- Faça uma consulta que mostre a quantidade de alunos que cada curso possui. Classifique os resultados em ordem descrecente de acordo com a quantidade de alunos.
